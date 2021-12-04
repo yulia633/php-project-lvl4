@@ -1,0 +1,30 @@
+version: '3.7'
+
+services:
+  application:
+    build: .
+    volumes:
+      - .:/app:delegated
+    ports:
+      - "8000:8000"
+    depends_on:
+      - database
+    command: ["make", "start-app"]
+
+  frontend:
+    build: .
+    volumes:
+      - .:/app:delegated
+    command: ["make", "start-frontend"]
+
+  database:
+    image: postgres:13.2-alpine
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - 54320:5432
+    volumes:
+    - task-manager-pgdata:/var/lib/postgresql/data
+
+volumes:
+  task-manager-pgdata:

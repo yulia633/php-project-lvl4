@@ -1,0 +1,24 @@
+parameters:
+  level: 4
+  paths:
+    - app
+    - routes
+    - tests
+
+  checkMissingIterableValueType: false
+
+  excludePaths:
+    - routes/console.php
+    - routes/channels.php
+    - app/Http/Middleware/Authenticate.php
+    - app/Http/Middleware/RedirectIfAuthenticated.php
+    - app/Exceptions/Handler.php
+    - app/Providers/RouteServiceProvider.php
+
+  reportUnmatchedIgnoredErrors: false
+
+  ignoreErrors:
+   - '#Call to an undefined method Illuminate\\Http\\Client\\Response::#'
+   - '#Call to an undefined method Illuminate\\Database\\Query\\Builder::#'
+   - '#Cannot access offset [\S]+ on array\(#'
+   - '#Parameter \#1 \$message of function flash expects string\|null, array\|string\|null given.#'
