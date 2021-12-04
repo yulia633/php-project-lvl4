@@ -25,7 +25,8 @@
         "phpstan/phpstan": "^0.12.99",
         "phpunit/phpunit": "^9.5.10",
         "slevomat/coding-standard": "dev-master",
-        "squizlabs/php_codesniffer": "*"
+        "squizlabs/php_codesniffer": "*",
+        "heroku/heroku-buildpack-php": "*"
     },
     "autoload": {
         "psr-4": {
