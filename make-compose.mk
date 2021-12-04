@@ -61,7 +61,7 @@ compose-check:
 	docker-compose run --rm application make check
 
 ci:
-	docker-compose -f docker-compose.ci.yml -p hexlet-sicp-ci build
-	docker-compose -f docker-compose.ci.yml -p hexlet-sicp-ci run application make setup
-	docker-compose -f docker-compose.ci.yml -p hexlet-sicp-ci up --abort-on-container-exit
-	docker-compose -f docker-compose.ci.yml -p hexlet-sicp-ci down -v --remove-orphans
+	docker-compose -f docker-compose.ci.yml -p task-manager-pgdata-ci build
+	docker-compose -f docker-compose.ci.yml -p task-manager-pgdata-ci run application make setup
+	docker-compose -f docker-compose.ci.yml -p task-manager-pgdata-ci up --abort-on-container-exit
+	docker-compose -f docker-compose.ci.yml -p task-manager-pgdata-ci down -v --remove-orphans
