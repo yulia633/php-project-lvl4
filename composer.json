@@ -13,6 +13,8 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
+        "nesbot/carbon": "^2.16",
+        "laravelcollective/html": "^6.2",
         "rollbar/rollbar-laravel": "~7.0"
     },
     "require-dev": {
