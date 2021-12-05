@@ -10,10 +10,13 @@ parameters:
   excludePaths:
     - routes/console.php
     - routes/channels.php
+    - routes/web.php
     - app/Http/Middleware/Authenticate.php
     - app/Http/Middleware/RedirectIfAuthenticated.php
     - app/Exceptions/Handler.php
     - app/Providers/RouteServiceProvider.php
+    - app/Http/Controllers/Auth/*
+    - tests/Feature/Auth/*
 
   reportUnmatchedIgnoredErrors: false
 
