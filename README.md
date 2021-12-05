@@ -37,4 +37,4 @@
 
 ### Ссылка на приложение
 
-http://julbel-task-manager.herokuapp.com/
+https://julbel-task-manager.herokuapp.com/
