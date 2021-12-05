@@ -166,7 +166,7 @@ return [
          * Package Service Providers...
          */
         Rollbar\Laravel\RollbarServiceProvider::class,
-
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         /*
          * Application Service Providers...
          */

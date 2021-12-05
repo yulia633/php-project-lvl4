@@ -18,8 +18,10 @@
         "rollbar/rollbar-laravel": "~7.0"
     },
     "require-dev": {
+        "barryvdh/laravel-ide-helper": "^2.10",
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
+        "heroku/heroku-buildpack-php": "*",
         "laravel/breeze": "^1.4",
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.4",
@@ -27,8 +29,7 @@
         "phpstan/phpstan": "^0.12.99",
         "phpunit/phpunit": "^9.5.10",
         "slevomat/coding-standard": "dev-master",
-        "squizlabs/php_codesniffer": "*",
-        "heroku/heroku-buildpack-php": "*"
+        "squizlabs/php_codesniffer": "*"
     },
     "autoload": {
         "psr-4": {
