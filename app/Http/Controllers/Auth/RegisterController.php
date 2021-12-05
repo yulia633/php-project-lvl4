@@ -21,7 +21,6 @@ class RegisterController extends Controller
     | provide this functionality without requiring any additional code.
     |
     */
-
     use RegistersUsers;
 
     /**
@@ -56,7 +55,7 @@ class RegisterController extends Controller
         ], [
             'unique' => __('Пользователь с таким :attribute уже существует'),
             'password.min'    => __('Пароль должен иметь длину не менее :min символов'),
-            'password.confirmed' => __('Пароль и подтверждение не совпадают')
+            'password.confirmed' => __('Пароль и подтверждение не совпадают'),
         ]);
     }
 
