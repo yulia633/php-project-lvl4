@@ -33,6 +33,7 @@
     make compose-start # запустить сервер http://127.0.0.1:8000/
     make compose-bash  # запустить сессию bash в docker-контейнере
     make test          # запустить тесты в docker-контейнере
+    make db-prepare    # накатить миграции в docker-контейнере
     ```
 
 ### Ссылка на приложение
