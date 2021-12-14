@@ -17,6 +17,7 @@ parameters:
     - app/Providers/RouteServiceProvider.php
     - app/Http/Controllers/Auth/*
     - tests/Feature/Auth/*
+    - tests/Feature/*
 
   reportUnmatchedIgnoredErrors: false
 
@@ -25,3 +26,4 @@ parameters:
    - '#Call to an undefined method Illuminate\\Database\\Query\\Builder::#'
    - '#Cannot access offset [\S]+ on array\(#'
    - '#Parameter \#1 \$message of function flash expects string\|null, array\|string\|null given.#'
+   - '#Call to an undefined static method#'
