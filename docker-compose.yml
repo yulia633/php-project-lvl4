@@ -26,5 +26,14 @@ services:
     volumes:
     - task-manager-pgdata:/var/lib/postgresql/data
 
+  adminer:
+    image: adminer:latest
+    ports:
+      - 8080:8080
+    depends_on:
+      - database
+    environment:
+      ADMINER_DEFAULT_SERVER: database
+
 volumes:
   task-manager-pgdata:
