@@ -6,6 +6,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-param" content="_token" />
 
     <title>@lang('Менеджер задач')</title>
 
@@ -26,7 +27,7 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     @lang('Менеджер задач')
                 </a>
-                <a class="nav-item" href="#">
+                <a class="nav-item" href="{{ route('tasks.index') }}">
                     @lang('Задачи')
                 </a>
                 <a class="nav-item m-sm-2" href="{{ route('task_statuses.index') }}">
