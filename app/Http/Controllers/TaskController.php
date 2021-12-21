@@ -10,6 +10,16 @@ use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
+     /**
+     * Create the controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->authorizeResource(Task::class, 'task');
+    }
+
     /**
      * Display a listing of the resource.
      *
