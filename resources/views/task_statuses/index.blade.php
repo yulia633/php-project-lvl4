@@ -31,14 +31,8 @@
                                 <td>{{ $status->created_at }}</td>
                                 @if(Auth::check())
                                 <td>
-                                    <div class="btn-group" role="group" aria-label="Basic example">
-                                        <form action="{{ route('task_statuses.destroy', $status->id) }}" method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">{{ __('status.Delete') }}</button>
-                                        </form>
-                                        <a href="{{ route('task_statuses.edit', ['task_status' => $status]) }}"class="btn btn-primary">{{ __('status.Edit') }}</a>
-                                    </div>
+                                    <a class="text-danger" href="{{ route('task_statuses.destroy', $status->id) }}" data-method="delete" rel="nofollow" data-confirm="Вы уверены?">{{ __('status.Delete') }}</a>
+                                    <a href="{{ route('task_statuses.edit', $status->id) }}">{{ __('status.Edit') }}</a>
                                 </td>
                                 @endif
                             </tr>
