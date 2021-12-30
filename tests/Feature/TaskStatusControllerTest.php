@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use App\Models\TaskStatus;
 use App\Models\User;
+use App\Models\Task;
 
 class TaskStatusControllerTest extends TestCase
 {
@@ -14,6 +15,7 @@ class TaskStatusControllerTest extends TestCase
     {
         parent::setUp();
         $this->user = User::factory()->create();
+        Task::factory()->create();
     }
 
     /**
