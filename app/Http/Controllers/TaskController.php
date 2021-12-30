@@ -106,7 +106,7 @@ class TaskController extends Controller
     public function update(Request $request, Task $task)
     {
         $data = $request->validate(
-            ['name' => 'required|unique:tasks',
+            ['name' => 'required',
             'status_id' => 'required',
             'description' => 'nullable|string',
             'assigned_to_id' => 'nullable|integer',],

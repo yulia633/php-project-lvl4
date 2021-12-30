@@ -12,12 +12,10 @@
                     <div class="form-group">
                         {{Form::label('name', __('tasks.Task name'))}}
                         {{Form::text('name', '', array('class' => 'form-control'))}}
-                        @if ($errors->any())
-                            <div class="invalid-feedback d-block">
-                                @foreach ($errors->all() as $error)
-                                    {{ $error }}
-                                @endforeach
-                            </div>
+                        @if ($errors->has('name'))
+                        <div class="invalid-feedback d-block">
+                            <strong>{{ $errors->first('name') }}</strong>
+                        </div>
                         @endif
                     </div>
                 </div>
@@ -35,11 +33,9 @@
                     <div class="form-group">
                         {{Form::label('status_id', __('status.Status'))}}
                         {{Form::select('status_id', $taskStatuses, null, array('placeholder' => '----------', 'class' => 'form-control'))}}
-                        @if ($errors->any())
+                        @if ($errors->has('status_id'))
                         <div class="invalid-feedback d-block">
-                            @foreach ($errors->all() as $error)
-                                {{ $error }}
-                            @endforeach
+                            <strong>{{ $errors->first('status_id') }}</strong>
                         </div>
                         @endif
                     </div>
