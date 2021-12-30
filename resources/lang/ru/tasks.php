@@ -31,5 +31,5 @@ return [
     'Task has been added successfully' => 'Задача успешно создана',
     'Task has been updated successfully' => 'Задача успешно изменена',
     'Task has been deleted successfully' => 'Задача успешно удалена',
-    'Are you sure?' => 'Вы уверены?'
+    'Are you sure?' => 'Вы уверены?',
 ];

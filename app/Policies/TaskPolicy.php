@@ -14,7 +14,7 @@ class TaskPolicy
      * Determine whether the user can view any models.
      *
      * @param  \App\Models\User  $user
-     * @return mixed
+     * @return bool
      */
     public function viewAny(?User $user)
     {
@@ -26,7 +26,7 @@ class TaskPolicy
      *
      * @param  \App\Models\User  $user
      * @param  \App\Models\Task  $task
-     * @return mixed
+     * @return bool
      */
     public function view(?User $user, Task $task)
     {
@@ -37,7 +37,7 @@ class TaskPolicy
      * Determine whether the user can create models.
      *
      * @param  \App\Models\User  $user
-     * @return mixed
+     * @return bool
      */
     public function create(User $user)
     {
@@ -49,7 +49,7 @@ class TaskPolicy
      *
      * @param  \App\Models\User  $user
      * @param  \App\Models\Task  $task
-     * @return mixed
+     * @return bool
      */
     public function update(User $user, Task $task)
     {
@@ -61,7 +61,7 @@ class TaskPolicy
      *
      * @param  \App\Models\User  $user
      * @param  \App\Models\Task  $task
-     * @return mixed
+     * @return bool
      */
     public function delete(User $user, Task $task)
     {
@@ -73,7 +73,7 @@ class TaskPolicy
      *
      * @param  \App\Models\User  $user
      * @param  \App\Models\Task  $task
-     * @return mixed
+     * @return bool
      */
     public function restore(User $user, Task $task)
     {
@@ -85,7 +85,7 @@ class TaskPolicy
      *
      * @param  \App\Models\User  $user
      * @param  \App\Models\Task  $task
-     * @return mixed
+     * @return bool
      */
     public function forceDelete(User $user, Task $task)
     {

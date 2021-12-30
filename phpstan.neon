@@ -27,3 +27,4 @@ parameters:
    - '#Cannot access offset [\S]+ on array\(#'
    - '#Parameter \#1 \$message of function flash expects string\|null, array\|string\|null given.#'
    - '#Call to an undefined static method#'
+   - '#Access to an undefined property#'
