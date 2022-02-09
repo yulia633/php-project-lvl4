@@ -28,5 +28,5 @@ return [
     'Label has been added successfully' => 'Метка успешно создана',
     'Label has been updated successfully' => 'Метка успешно изменена',
     'Label has been deleted successfully' => 'Метка успешно удалена',
-    'Are you sure?' => 'Вы уверены?'
+    'Are you sure?' => 'Вы уверены?',
 ];
