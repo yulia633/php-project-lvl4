@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Label;
 use App\Models\Task;
 use App\Models\TaskStatus;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Contracts\Auth\Authenticatable;
 
 class TaskController extends Controller
 {
@@ -44,7 +44,8 @@ class TaskController extends Controller
         $task = new Task();
         $taskStatuses = TaskStatus::pluck('name', 'id')->all();
         $users = User::pluck('name', 'id')->all();
-        return view('tasks.create', compact('task', 'taskStatuses', 'users'));
+        $labels = Label::pluck('name', 'id')->all();
+        return view('tasks.create', compact('task', 'taskStatuses', 'users', 'labels'));
     }
 
     /**
@@ -59,7 +60,8 @@ class TaskController extends Controller
             ['name' => 'required|unique:tasks',
             'status_id' => 'required',
             'description' => 'nullable|string',
-            'assigned_to_id' => 'nullable|integer',],
+            'assigned_to_id' => 'nullable|integer',
+            'labels' => 'nullable|array',],
             $messages = ['unique' => __('validation.The task name has already been taken')]
         );
 
@@ -68,6 +70,8 @@ class TaskController extends Controller
         $task = $user->tasks()->make();
         $task->fill($data);
         $task->save();
+
+        $task->labels()->sync($request->input('labels'));
 
         flash(__('tasks.Task has been added successfully'))->success();
         return redirect()
@@ -95,7 +99,8 @@ class TaskController extends Controller
     {
         $taskStatuses = TaskStatus::pluck('name', 'id')->all();
         $users = User::pluck('name', 'id')->all();
-        return view('tasks.edit', compact('task', 'taskStatuses', 'users'));
+        $labels = Label::pluck('name', 'id')->all();
+        return view('tasks.edit', compact('task', 'taskStatuses', 'users', 'labels'));
     }
 
     /**
@@ -111,12 +116,16 @@ class TaskController extends Controller
             ['name' => 'required',
             'status_id' => 'required',
             'description' => 'nullable|string',
-            'assigned_to_id' => 'nullable|integer',],
+            'assigned_to_id' => 'nullable|integer',
+            'labels' => 'nullable|array',],
             $messages = ['unique' => __('validation.The task name has already been taken')]
         );
 
         $task->update($data);
         $task->save();
+
+        $task->labels()->sync($request->input('labels'));
+
         flash(__('tasks.Task has been updated successfully'))->success();
         return redirect()
             ->route('tasks.index');
@@ -130,6 +139,7 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
+        $task->labels()->detach();
         $task->delete();
 
         flash(__('tasks.Task has been deleted successfully'))->success();
