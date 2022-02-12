@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 
 @section('content')
@@ -46,6 +45,14 @@
                     <div class="form-group">
                         {{Form::label('assigned_to_id', __('tasks.Executor'))}}
                         {{Form::select('assigned_to_id', $users, null, array('placeholder' => '----------', 'class' => 'form-control'))}}
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-6">
+                    <div class="form-group">
+                        {{Form::label('label_id', __('labels.Labels'))}}
+                        {{Form::select('label_id', $labels, null, ['placeholder' => '', 'multiple' => 'multiple', 'name' => 'labels[]', 'class' => 'form-control'])}}
                     </div>
                 </div>
             </div>

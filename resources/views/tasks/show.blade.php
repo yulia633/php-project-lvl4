@@ -21,5 +21,16 @@
             <p>{{ __('tasks.Description') . ": ". $task->description }}</p>
         </div>
     </div>
+<div class="row">
+    <div class="col">
+        <p>{{ __('labels.Labels') . ": " }}</p>
+        @if ($task->labels)
+            <ul>
+                @foreach ($task->labels as $label)
+                    <li>{{ $label->name }}</li>
+                @endforeach
+            </ul>
+        @endif
+    </div>
 </div>
 @endsection
