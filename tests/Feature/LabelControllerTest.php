@@ -97,7 +97,7 @@ class LabelControllerTest extends TestCase
     {
         $label = Label::factory()->create();
 
-        $response = $this->delete(route('labels.destroy', $label));
+        $response = $this->actingAs($this->user)->delete(route('labels.destroy', $label));
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
 
