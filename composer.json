@@ -16,7 +16,8 @@
         "laravel/ui": "^3.4",
         "nesbot/carbon": "^2.16",
         "laravelcollective/html": "^6.2",
-        "rollbar/rollbar-laravel": "~7.0"
+        "rollbar/rollbar-laravel": "~7.0",
+        "spatie/laravel-query-builder": "^3.6.2"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.10",

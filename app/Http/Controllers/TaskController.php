@@ -8,10 +8,12 @@ use App\Models\TaskStatus;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Spatie\QueryBuilder\QueryBuilder;
+use Spatie\QueryBuilder\AllowedFilter;
 
 class TaskController extends Controller
 {
-     /**
+    /**
      * Create the controller instance.
      *
      * @return void
@@ -28,9 +30,18 @@ class TaskController extends Controller
      */
     public function index()
     {
+        $tasks = QueryBuilder::for(Task::class)
+            ->allowedFilters([
+                AllowedFilter::exact('status_id'),
+                AllowedFilter::exact('created_by_id'),
+                AllowedFilter::exact('assigned_to_id'),
+            ])
+            ->orderBy('id', 'asc')
+            ->paginate(5);
+
         $taskStatuses = TaskStatus::pluck('name', 'id')->all();
         $users = User::pluck('name', 'id')->all();
-        $tasks = Task::orderBy('id', 'desc')->paginate(5);
+
         return view('tasks.index', compact('tasks', 'taskStatuses', 'users'));
     }
 
@@ -57,11 +68,13 @@ class TaskController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate(
-            ['name' => 'required|unique:tasks',
-            'status_id' => 'required',
-            'description' => 'nullable|string',
-            'assigned_to_id' => 'nullable|integer',
-            'labels' => 'nullable|array',],
+            [
+                'name' => 'required|unique:tasks',
+                'status_id' => 'required',
+                'description' => 'nullable|string',
+                'assigned_to_id' => 'nullable|integer',
+                'labels' => 'nullable|array',
+            ],
             $messages = ['unique' => __('validation.The task name has already been taken')]
         );
 
@@ -114,11 +127,13 @@ class TaskController extends Controller
     public function update(Request $request, Task $task)
     {
         $data = $request->validate(
-            ['name' => 'required',
-            'status_id' => 'required',
-            'description' => 'nullable|string',
-            'assigned_to_id' => 'nullable|integer',
-            'labels' => 'nullable|array',],
+            [
+                'name' => 'required',
+                'status_id' => 'required',
+                'description' => 'nullable|string',
+                'assigned_to_id' => 'nullable|integer',
+                'labels' => 'nullable|array',
+            ],
             $messages = ['unique' => __('validation.The task name has already been taken')]
         );
 
