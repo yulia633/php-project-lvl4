@@ -71,6 +71,7 @@ class TaskController extends Controller
         $task->fill($data);
         $task->save();
 
+        /** @var Task $task */
         $task->labels()->sync($request->input('labels'));
 
         flash(__('tasks.Task has been added successfully'))->success();
