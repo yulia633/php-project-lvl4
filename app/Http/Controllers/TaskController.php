@@ -84,8 +84,14 @@ class TaskController extends Controller
         $task->fill($data);
         $task->save();
 
+        $labels = $request->input('labels') ?? [];
+
+        $result = array_filter($labels, function ($label) {
+            return isset($label);
+        });
+
         /** @var Task $task */
-        $task->labels()->sync($request->input('labels'));
+        $task->labels()->sync($result);
 
         flash(__('tasks.Task has been added successfully'))->success();
         return redirect()
@@ -128,7 +134,7 @@ class TaskController extends Controller
     {
         $data = $request->validate(
             [
-                'name' => 'required',
+                'name' => 'required|unique:tasks,name,' . $task->id,
                 'status_id' => 'required',
                 'description' => 'nullable|string',
                 'assigned_to_id' => 'nullable|integer',
@@ -137,10 +143,16 @@ class TaskController extends Controller
             $messages = ['unique' => __('validation.The task name has already been taken')]
         );
 
-        $task->update($data);
+        $task->fill($data);
         $task->save();
 
-        $task->labels()->sync($request->input('labels'));
+        $labels = $request->input('labels') ?? [];
+
+        $result = array_filter($labels, function ($label) {
+            return isset($label);
+        });
+
+        $task->labels()->sync($result);
 
         flash(__('tasks.Task has been updated successfully'))->success();
         return redirect()
