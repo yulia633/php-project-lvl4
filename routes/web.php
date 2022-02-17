@@ -22,8 +22,8 @@ require __DIR__ . '/auth.php';
 Auth::routes();
 
 Route::get('/', function () {
-    return view('home');
-})->name('home');
+    return view('welcome');
+})->name('welcome');
 
 Route::resources([
     'task_statuses' => TaskStatusController::class,
