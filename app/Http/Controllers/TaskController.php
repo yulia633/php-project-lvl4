@@ -37,7 +37,7 @@ class TaskController extends Controller
                 AllowedFilter::exact('assigned_to_id'),
             ])
             ->orderBy('id', 'asc')
-            ->paginate(5);
+            ->paginate(15);
 
         $taskStatuses = TaskStatus::pluck('name', 'id')->all();
         $users = User::pluck('name', 'id')->all();
