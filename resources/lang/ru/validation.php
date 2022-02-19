@@ -165,4 +165,8 @@ return [
     'The task name has already been taken' => 'Задача с таким именем уже существует',
     'The label name has already been taken' => 'Метка с таким именем уже существует',
     'The status name has already been taken' => 'Статус с таким именем уже существует',
+    'Send Password Reset Link' => 'Отправить ссылку для сброса пароля',
+    'Reset Password' => 'Сбрость пароль',
+    'E-Mail Address' => 'E-Mail адрес',
+
 ];
