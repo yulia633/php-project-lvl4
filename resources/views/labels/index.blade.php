@@ -30,7 +30,7 @@
                                 <td>{{ $label->id }}</td>
                                 <td scope="row">{{ $label->name }}</td>
                                 <td>{{ $label->description }}</td>
-                                <td>{{ $label->created_at }}</td>
+                                <td>{{ $label->created_at->format('d.m.Y') }}</td>
                                 @if(Auth::check())
                                 <td>
                                     <a class="text-danger" href="{{ route('labels.destroy', ['label' => $label]) }}" data-method="delete" rel="nofollow" data-confirm="{{ __('labels.Are you sure?') }}">{{ __('labels.Delete') }}</a>

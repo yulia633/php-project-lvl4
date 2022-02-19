@@ -28,7 +28,7 @@
                             <tr>
                                 <td>{{ $status->id }}</td>
                                 <td scope="row"> {{ $status->name }} </td>
-                                <td>{{ $status->created_at }}</td>
+                                <td>{{ $status->created_at->format('d.m.Y') }}</td>
                                 @if(Auth::check())
                                 <td>
                                     <a class="text-danger" href="{{ route('task_statuses.destroy', $status->id) }}" data-method="delete" rel="nofollow" data-confirm="Вы уверены?">{{ __('status.Delete') }}</a>
