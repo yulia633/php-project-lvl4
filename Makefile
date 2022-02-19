@@ -39,7 +39,7 @@ test:
 	php artisan test
 
 test-coverage:
-	XDEBUG_MODE=coverage php artisan test --coverage-clover build/logs/clover.xml
+	php artisan test --coverage-clover build/logs/clover.xml
 
 analyse:
 	composer exec phpstan analyse -v -- --memory-limit=-1
