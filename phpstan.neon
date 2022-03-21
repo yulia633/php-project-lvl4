@@ -1,5 +1,5 @@
 parameters:
-  level: 4
+  level: 8
   paths:
     - app
     - routes
@@ -9,22 +9,34 @@ parameters:
 
   excludePaths:
     - routes/console.php
-    - routes/channels.php
-    - routes/web.php
     - app/Http/Middleware/Authenticate.php
     - app/Http/Middleware/RedirectIfAuthenticated.php
-    - app/Exceptions/Handler.php
+    - app/Helpers/HtmlHelper.php
+    - routes/channels.php
     - app/Providers/RouteServiceProvider.php
+    - app/Http/Middleware/TrustProxies.php
+    - app/Exceptions/Handler.php
+    - app/Models/User.php
     - app/Http/Controllers/Auth/*
+    - routes/auth.php
     - tests/Feature/Auth/*
-    - tests/Feature/*
 
   reportUnmatchedIgnoredErrors: false
 
   ignoreErrors:
-   - '#Call to an undefined method Illuminate\\Http\\Client\\Response::#'
-   - '#Call to an undefined method Illuminate\\Database\\Query\\Builder::#'
-   - '#Cannot access offset [\S]+ on array\(#'
    - '#Parameter \#1 \$message of function flash expects string\|null, array\|string\|null given.#'
-   - '#Call to an undefined static method#'
-   - '#Access to an undefined property#'
+   - '#Cannot call method [\w]+\(\) on App\\Models\\User\|null.#'
+   - '#Dynamic call to static method#'
+   # TODO: remove this when larastan release new version
+   - '#<Illuminate\\Database\\Eloquent\\Model>\|Illuminate\\Database\\Eloquent\\Model\::\$id#'
+   - '#<Illuminate\\Database\\Eloquent\\Model>\|Illuminate\\Database\\Eloquent\\Model\::\$createdBy#'
+   - '#Tests\\Feature\\[\w]+\::\$user \(App\\Models\\User\) does not accept#'
+   - '#Illuminate\\Foundation\\Testing\\TestCase::actingAs\(\) expects Illuminate\\Contracts\\Auth\\Authenticatable#'
+   - '#Illuminate\\Foundation\\Testing\\TestCase::post\(\) expects array, array\|Illuminate\\Database\\Eloquent\\Collection<Illuminate\\Database\\Eloquent\\Model>#'
+   - '#Illuminate\\Foundation\\Testing\\TestCase::assertDatabaseHas\(\) expects array, array\|Illuminate\\Database\\Eloquent\\Collection<Illuminate\\Database\\Eloquent\\Model>#'
+   - '#Illuminate\\Foundation\\Testing\\TestCase::patch\(\) expects array, array\|Illuminate\\Database\\Eloquent\\Collection<Illuminate\\Database\\Eloquent\\Model>#'
+   # TODO: remove this when add in courses theory of returning types
+   - '#has no return type specified#'
+   - '#should return .* but returns#'
+   - '#Anonymous function should have native return type#'
+   - '#Call to an undefined method Illuminate\\Http\RedirectResponse|Illuminate\\Routing\\Redirector::route\(\)#'

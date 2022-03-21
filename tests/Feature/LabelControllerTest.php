@@ -44,6 +44,7 @@ class LabelControllerTest extends TestCase
      */
     public function testStore()
     {
+        /** @var array $data */
         $data = Label::factory()
             ->make()
             ->only(['name', 'description']);
@@ -78,6 +79,8 @@ class LabelControllerTest extends TestCase
     public function testUpdate()
     {
         $label = Label::factory()->create();
+
+        /** @var array $data */
         $data = Label::factory()->make()
             ->only(['name', 'description']);
 

@@ -60,13 +60,14 @@ class TaskControllerTest extends TestCase
      */
     public function testStore()
     {
-        $task = Task::factory()
-            ->make()
-            ->only(['name', 'description', 'status_id', 'assigned_to_id']);
+        /** @var array $task */
+        $task = Task::factory()->make()->only(['name', 'description', 'status_id', 'assigned_to_id']);
 
+        /** @var Label $label */
         $label = Label::factory()->create();
 
-        $response = $this->actingAs($this->user)->post(route('tasks.store'), array_merge($task, ['labels' => [$label->id]]));
+        $response = $this->actingAs($this->user)
+            ->post(route('tasks.store'), array_merge($task, ['labels' => [$label->id]]));
 
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
@@ -95,9 +96,13 @@ class TaskControllerTest extends TestCase
      */
     public function testUpdate()
     {
+        /** @var Label $label */
         $label = Label::factory()->create();
 
+        /** @var Task $task */
         $task = Task::factory()->create();
+
+        /** @var array $taskData */
         $taskData = Task::factory()
             ->make()
             ->only(['name', 'description', 'status_id', 'assigned_to_id']);
@@ -123,6 +128,8 @@ class TaskControllerTest extends TestCase
     public function testDelete()
     {
         $task = Task::factory()->create();
+
+        /** @var Task $task */
         $user = $task->creator;
 
         $response = $this->actingAs($user)->delete(route('tasks.destroy', $task));

@@ -32,7 +32,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        return redirect(RouteServiceProvider::HOME);
     }
 
     /**
@@ -43,7 +43,9 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request)
     {
-        Auth::guard('web')->logout();
+        /** @var \Illuminate\Contracts\Auth\StatefulGuard $guard */
+        $guard = Auth::guard('web');
+        $guard->logout();
 
         $request->session()->invalidate();
 

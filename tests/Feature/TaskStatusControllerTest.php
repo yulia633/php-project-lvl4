@@ -46,6 +46,7 @@ class TaskStatusControllerTest extends TestCase
      */
     public function testStore()
     {
+        /** @var array $data */
         $data = TaskStatus::factory()
         ->make()
         ->only(['name']);
@@ -81,6 +82,7 @@ class TaskStatusControllerTest extends TestCase
     {
         $status = TaskStatus::factory()->create();
 
+        /** @var array $data */
         $data = TaskStatus::factory()
         ->make()
         ->only(['name']);
@@ -99,6 +101,7 @@ class TaskStatusControllerTest extends TestCase
      */
     public function testDelete()
     {
+        /** @var TaskStatus $taskStatus */
         $taskStatus = TaskStatus::factory()->create();
 
         $response = $this->actingAs($this->user)
