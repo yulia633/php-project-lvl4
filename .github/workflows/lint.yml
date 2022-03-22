@@ -18,10 +18,9 @@ jobs:
       - name: Run CI
         run: make ci
 
-      - name: Code Climate Coverage Action
-        uses: paambaati/codeclimate-action@v3.0.0
-        env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
         with:
-          coverageLocations: ${{ github.workplace }}/build/logs/clover.xml:clover
-          debug: true
+          token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+          file: build/logs/clover.xml
+          fail_ci_if_error: true
