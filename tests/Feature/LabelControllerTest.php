@@ -98,6 +98,7 @@ class LabelControllerTest extends TestCase
      */
     public function testDelete()
     {
+        /** @var Label $label */
         $label = Label::factory()->create();
 
         $response = $this->actingAs($this->user)->delete(route('labels.destroy', $label));
