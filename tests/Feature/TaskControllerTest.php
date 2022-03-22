@@ -136,6 +136,6 @@ class TaskControllerTest extends TestCase
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
 
-        $this->assertDeleted($task);
+        $this->assertModelMissing($task);
     }
 }

@@ -104,6 +104,6 @@ class LabelControllerTest extends TestCase
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
 
-        $this->assertDeleted($label);
+        $this->assertModelMissing($label);
     }
 }

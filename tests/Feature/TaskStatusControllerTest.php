@@ -109,9 +109,6 @@ class TaskStatusControllerTest extends TestCase
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
 
-        $this->assertDeleted('task_statuses', [
-           'id' => $taskStatus->id,
-           'name' => $taskStatus->name,
-        ]);
+        $this->assertModelMissing($taskStatus);
     }
 }
