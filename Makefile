@@ -39,7 +39,7 @@ test:
 	php artisan test
 
 test-coverage:
-	composer exec --verbose phpunit tests -- --coverage-clover build/logs/clover.xml
+	XDEBUG_MODE=coverage php artisan test --coverage-clover build/logs/clover.xml
 
 check: lint analyse test
 
