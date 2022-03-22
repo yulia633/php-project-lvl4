@@ -6,7 +6,7 @@ console:
 deploy:
 	git push heroku master
 
-setup: env-prepare sqlite-prepare install key db-prepare #ide-helper
+setup:env-prepare sqlite-prepare install key db-prepare
 	npm run dev
 
 install-app:
@@ -38,14 +38,8 @@ lint-fix:
 test:
 	php artisan test
 
-# test-coverage:
-# 	php artisan test --coverage-clover build/logs/clover.xml
-
 test-coverage:
 	XDEBUG_MODE=coverage php artisan test --coverage-clover build/logs/clover.xml
-
-analyse:
-	composer exec phpstan analyse -v -- --memory-limit=-1
 
 check: lint analyse test
 
