@@ -3,7 +3,7 @@
 
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/e8f6eafa501c2c3f3290/maintainability)](https://codeclimate.com/github/yulia633/php-project-lvl4/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/e8f6eafa501c2c3f3290/test_coverage)](https://codeclimate.com/github/yulia633/php-project-lvl4/test_coverage)
+[![codecov](https://codecov.io/gh/yulia633/php-project-lvl4/branch/main/graph/badge.svg?token=NMUBRAWUWW)](https://codecov.io/gh/yulia633/php-project-lvl4)
 ![linter and tests](https://github.com/yulia633/php-project-lvl4/workflows/linter%20and%20tests/badge.svg)
 
 
