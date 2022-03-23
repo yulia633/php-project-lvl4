@@ -54,7 +54,6 @@ class LabelControllerTest extends TestCase
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
 
-        $this->get(route('labels.index'))->assertSee($data['name']);
         $this->assertDatabaseHas('labels', $data);
     }
 

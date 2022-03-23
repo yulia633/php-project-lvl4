@@ -5,7 +5,6 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use App\Models\TaskStatus;
 use App\Models\User;
-use App\Models\Task;
 
 class TaskStatusControllerTest extends TestCase
 {
@@ -15,7 +14,6 @@ class TaskStatusControllerTest extends TestCase
     {
         parent::setUp();
         $this->user = User::factory()->create();
-        Task::factory()->create();
     }
 
     /**
@@ -56,7 +54,6 @@ class TaskStatusControllerTest extends TestCase
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
 
-        $this->get(route('task_statuses.index'))->assertSee($data['name']);
         $this->assertDatabaseHas('task_statuses', $data);
     }
 
