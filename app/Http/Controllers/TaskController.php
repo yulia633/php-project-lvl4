@@ -28,7 +28,7 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
         $tasks = QueryBuilder::for(Task::class)
             ->allowedFilters([
@@ -42,7 +42,8 @@ class TaskController extends Controller
         $taskStatuses = TaskStatus::pluck('name', 'id')->all();
         $users = User::pluck('name', 'id')->all();
 
-        return view('tasks.index', compact('tasks', 'taskStatuses', 'users'));
+        $filter = $request->filter ?? null;
+        return view('tasks.index', compact('tasks', 'taskStatuses', 'users', 'filter'));
     }
 
     /**
