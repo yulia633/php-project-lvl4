@@ -4,7 +4,6 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use App\Models\User;
-use App\Models\Label;
 use App\Models\Task;
 use App\Models\TaskStatus;
 
@@ -36,9 +35,9 @@ class TaskControllerTest extends TestCase
      */
     public function testShow()
     {
-        $task = Task::factory()->create();
+        $taskData = Task::factory()->create();
 
-        $response = $this->get(route('tasks.show', ['task' => $task]));
+        $response = $this->get(route('tasks.show', ['task' => $taskData]));
         $response->assertOk();
     }
 
@@ -60,19 +59,14 @@ class TaskControllerTest extends TestCase
      */
     public function testStore()
     {
-        /** @var array $task */
-        $task = Task::factory()->make()->only(['name', 'description', 'status_id', 'assigned_to_id']);
+        /** @var array $taskData */
+        $taskData = Task::factory()->make()->only(['name', 'description', 'status_id', 'assigned_to_id']);
 
-        /** @var Label $label */
-        $label = Label::factory()->create();
-
-        $response = $this->actingAs($this->user)
-            ->post(route('tasks.store'), array_merge($task, ['labels' => [$label->id]]));
-
+        $response = $this->actingAs($this->user)->post(route('tasks.store'), $taskData);
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
 
-        $this->assertDatabaseHas('tasks', array_merge($task, ['created_by_id' => $this->user->id]));
+        $this->assertDatabaseHas('tasks', $taskData);
     }
 
     /**
@@ -82,9 +76,9 @@ class TaskControllerTest extends TestCase
      */
     public function testEdit()
     {
-        $task = Task::factory()->create();
+        $taskData = Task::factory()->create();
 
-        $response = $this->actingAs($this->user)->get(route('tasks.edit', ['task' => $task]));
+        $response = $this->actingAs($this->user)->get(route('tasks.edit', ['task' => $taskData]));
         $response->assertOk();
     }
 
@@ -95,28 +89,16 @@ class TaskControllerTest extends TestCase
      */
     public function testUpdate()
     {
-        /** @var Label $label */
-        $label = Label::factory()->create();
-
-        /** @var Task $task */
-        $task = Task::factory()->create();
-
-        /** @var array $taskData */
-        $taskData = Task::factory()
+        $taskData = Task::factory()->create();
+        $updatedTaskData = Task::factory()
             ->make()
             ->only(['name', 'description', 'status_id', 'assigned_to_id']);
 
-        $data = array_merge($taskData, ['labels' => [$label->id]]);
-
-        $response = $this->actingAs($this->user)->patch(route('tasks.update', ['task' => $task]), $data);
+        $response = $this->actingAs($this->user)->patch(route('tasks.update', ['task' => $taskData]), $updatedTaskData);
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
 
-        $this->assertDatabaseHas('tasks', $taskData);
-        $this->assertDatabaseHas('label_task', [
-            'label_id' => $label->id,
-            'task_id' => $task->id,
-        ]);
+        $this->assertDatabaseHas('tasks', $updatedTaskData);
     }
 
     /**
@@ -126,15 +108,12 @@ class TaskControllerTest extends TestCase
      */
     public function testDelete()
     {
-        $task = Task::factory()->create();
+        $taskData = Task::factory()->create(['created_by_id' => $this->user->id]);
 
-        /** @var Task $task */
-        $user = $task->creator;
-
-        $response = $this->actingAs($user)->delete(route('tasks.destroy', $task));
+        $response = $this->actingAs($this->user)->delete(route('tasks.destroy', $taskData));
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
 
-        $this->assertModelMissing($task);
+        $this->assertModelMissing($taskData);
     }
 }
