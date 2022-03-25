@@ -108,6 +108,7 @@ class TaskControllerTest extends TestCase
      */
     public function testDelete()
     {
+        /** @var Task $taskData */
         $taskData = Task::factory()->create(['created_by_id' => $this->user->id]);
 
         $response = $this->actingAs($this->user)->delete(route('tasks.destroy', $taskData));
