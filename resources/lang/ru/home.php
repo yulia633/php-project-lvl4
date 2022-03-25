@@ -15,5 +15,5 @@ return [
 
     'Hello from Hexlet!' => 'Привет от Хекслета!',
     'Practical programming courses!' => 'Практические курсы по программированию',
-    'Learn more' => 'Узнать больше'
+    'Learn more' => 'Узнать больше',
 ];
