@@ -10,12 +10,7 @@
                 <div class="col-6">
                     <div class="form-group">
                         {{Form::label('name', __('tasks.Task name'))}}
-                        {{Form::text('name', '', array('class' => 'form-control'))}}
-                        @if ($errors->has('name'))
-                        <div class="invalid-feedback d-block">
-                            <strong>{{ $errors->first('name') }}</strong>
-                        </div>
-                        @endif
+                        {{Form::bsText('name', '', ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : '')])}}
                     </div>
                 </div>
             </div>
