@@ -47,7 +47,7 @@
                                 <td scope="row"> {{ $task->status->name }} </td>
                                 <td><a href="{{ route('tasks.show', $task) }}">{{ $task->name }}</a></td>
                                 <td>{{ $task->creator->name }}</td>
-                                <td>{{ $task->executor->name ?? null }}</td>
+                                <td>{{ optional($task->executor)->name }}</td>
                                 <td>{{ $task->created_at->format('d.m.Y') }}</td>
                                 <td>
                                     @can('delete', $task)
