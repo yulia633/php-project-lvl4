@@ -13,6 +13,7 @@ return [
     |
     */
 
+    'Manager Tasks' => 'Менеджер задач',
     'Tasks' => 'Задачи',
     'Create' => 'Создать',
     'Create task' => 'Создать задачу',

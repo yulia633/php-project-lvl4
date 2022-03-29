@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="csrf-param" content="_token" />
 
-    <title>@lang('Менеджер задач')</title>
+    <title>{{ __('tasks.Manager Tasks') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -25,16 +25,16 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    @lang('Менеджер задач')
+                   {{ __('tasks.Manager Tasks') }}
                 </a>
                 <a class="nav-item" href="{{ route('tasks.index') }}">
-                    @lang('Задачи')
+                    {{ __('tasks.Tasks') }}
                 </a>
                 <a class="nav-item m-sm-2" href="{{ route('task_statuses.index') }}">
-                    @lang('Статусы')
+                    {{ __('status.Statuses') }}
                 </a>
                 <a class="nav-item m-sm-2" href={{ route('labels.index') }}>
-                    @lang('Метки')
+                    {{ __('labels.Labels') }}
                 </a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
